@@ -7,6 +7,7 @@ set shiftwidth=4
 set nu
 set rnu
 set hidden
+set colorcolumn=80
 syntax on
 
 autocmd BufRead,BufNewFile *.q set tabstop=2|set shiftwidth=2
