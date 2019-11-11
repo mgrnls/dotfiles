@@ -98,6 +98,6 @@ fun! TrimWhitespace()
 endfun
 autocmd BufWritePre * call TrimWhitespace()
 
-" Add statusline with very basic info.
+" Add statusline with buffer number, filename and line count.
 set laststatus=2
-set stl=\ %t%m\ \|\ buffer\:\ %n%=line\:\ %l/%L\ (%p%%)\ "
+set stl=\ %n\ \|\ %t%m%=line\:\ %l/%L\ (%p%%)\ "
