@@ -8,6 +8,7 @@ set nu
 set rnu
 set hidden
 set colorcolumn=80
+set textwidth=80
 set backspace=2
 set backspace=eol,indent,start
 set scrolloff=5
@@ -17,6 +18,7 @@ set splitbelow
 set belloff=all
 set foldmethod=indent
 set nofoldenable
+set formatoptions-=t
 set formatoptions+=cro
 set spelllang=en_gb
 set background=dark
@@ -27,9 +29,10 @@ set smartcase
 colorscheme slate
 syntax on
 
-autocmd BufRead,BufNewFile *.q setl tabstop=2|set shiftwidth=2
-autocmd FileType markdown setl cc=0 spell com=b:-,b:1. fo=tcroqln
+autocmd BufRead,BufNewFile *.q setl tabstop=2 shiftwidth=2
+autocmd FileType markdown setl cc=0 spell com=b:-,b:1. fo=roqln
 autocmd BufRead .vimrc setl tabstop=2 shiftwidth=2
+autocmd FileType python setl cc=79 tw=79
 
 if has("gui_running")
   if has("mac")
@@ -48,23 +51,26 @@ nnoremap ,q :q<enter>
 nnoremap ,x :x<enter>
 nnoremap ,e :e<space>
 nnoremap ,n :call ToggleNetrw()<enter>
-nnoremap ,k :q!<enter>
+nnoremap ,Q :q!<enter>
 nnoremap ,d :bd<enter>
 nnoremap <C-n> :bn<enter>
 nnoremap <C-p> :bp<enter>
 nnoremap ,, ,
-
-" Experimental... surround highlighted text and then undo it
-nnoremap ,s :setlocal spell!<enter>
+nnoremap <F5> :setlocal spell!<enter>
 xnoremap ,( c(<esc>pa)<esc>
 xnoremap ,{ c{<esc>pa}<esc>
 xnoremap ,[ c[<esc>pa]<esc>
-nnoremap ,u( di(va(p
-nnoremap ,u[ di[va]p
-nnoremap ,u{ di{va}p
-
-" Also experimental, clear search pattern (so no highlighting)
+nnoremap ,( di(va(p
+nnoremap ,[ di[va]p
+nnoremap ,{ di{va}p
 nnoremap ,/ :let @/ = ""<enter>
+vnoremap < <gv
+vnoremap > >gv
+nnoremap ,s a<C-X>s
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " indent guide
 let g:indent_guides_enable_on_vim_startup=1
@@ -92,7 +98,7 @@ function! ToggleNetrw()
   endif
 endfunction
 
-" Delete trailing whitespace everytime you save.
+" Delete trailing white space every time you save.
 fun! TrimWhitespace()
   let l:save = winsaveview()
   keeppatterns %s/\s\+$//e
@@ -102,4 +108,9 @@ autocmd BufWritePre * call TrimWhitespace()
 
 " Add statusline with buffer number, filename and line count.
 set laststatus=2
-set stl=%#LineNr#\ %n\ \|\ %t%m%=\ line\:\ %l/%L\ (%p%%)\ "
+set stl=%#LineNr#\ %n\ \|\ %t%m%=%<\ line\:\ %l/%L\ (%p%%)\ "
+
+" Notes to self
+" =============
+" Use `zi` to toggle all folds, and then use `za` to open/close a single fold.
+" This will only toggle folds locally.
