@@ -1,4 +1,5 @@
 filetype plugin indent on
+set nocompatible
 set mouse=a
 set tabstop=4
 set wrap linebreak
@@ -26,6 +27,9 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+set wildmenu
+set showcmd
+set autochdir
 colorscheme slate
 syntax on
 
@@ -36,41 +40,51 @@ autocmd FileType python setl cc=79 tw=79
 
 if has("gui_running")
   if has("mac")
-    set gfn=Menlo:h16
+    set gfn=Menlo:h14
   endif
 endif
+
+let mapleader=","
 
 inoremap ( ()<left>
 inoremap { {}<left>
 inoremap [ []<left>
 inoremap " ""<left>
-inoremap ,a <right>
+nnoremap '' ''<left>
+inoremap <Leader>a <right>
 inoremap jj <esc>
-nnoremap ,w :w<enter>
-nnoremap ,q :q<enter>
-nnoremap ,x :x<enter>
-nnoremap ,e :e<space>
-nnoremap ,n :call ToggleNetrw()<enter>
-nnoremap ,Q :q!<enter>
-nnoremap ,d :bd<enter>
+inoremap <F5> <esc>:setlocal spell!<enter>i
+nnoremap <Leader>w :w<enter>
+nnoremap <Leader>q :q<enter>
+nnoremap <Leader>x :x<enter>
+nnoremap <Leader>n :call ToggleNetrw()<enter>
+nnoremap <Leader>Q :q!<enter>
+nnoremap <Leader>d :bd<enter>
+nnoremap <Leader>b ^
+nnoremap <Leader>e $
+nnoremap <Leader>o :e<space>
 nnoremap <C-n> :bn<enter>
 nnoremap <C-p> :bp<enter>
-nnoremap ,, ,
+nnoremap <Leader><Leader> ,
 nnoremap <F5> :setlocal spell!<enter>
-xnoremap ,( c(<esc>pa)<esc>
-xnoremap ,{ c{<esc>pa}<esc>
-xnoremap ,[ c[<esc>pa]<esc>
-nnoremap ,( di(va(p
-nnoremap ,[ di[va]p
-nnoremap ,{ di{va}p
-nnoremap ,/ :let @/ = ""<enter>
+xnoremap <Leader>( c(<esc>pa)<esc>
+xnoremap <Leader>{ c{<esc>pa}<esc>
+xnoremap <Leader>[ c[<esc>pa]<esc>
+nnoremap <Leader>( di(va(p
+nnoremap <Leader>[ di[va]p
+nnoremap <Leader>{ di{va}p
+nnoremap <Leader>/ :let @/ = ""<enter>
 vnoremap < <gv
 vnoremap > >gv
-nnoremap ,s a<C-X>s
+nnoremap <Leader>s a<C-X>s
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" Experimental!
+nnoremap j gj
+nnoremap k gk
 
 " indent guide
 let g:indent_guides_enable_on_vim_startup=1
@@ -108,7 +122,7 @@ autocmd BufWritePre * call TrimWhitespace()
 
 " Add statusline with buffer number, filename and line count.
 set laststatus=2
-set stl=%#LineNr#\ %n\ \|\ %t%m%=%<\ line\:\ %l/%L\ (%p%%)\ "
+set stl=\ %n\ \|\ %t%m
 
 " Notes to self
 " =============
