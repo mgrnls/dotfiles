@@ -33,6 +33,7 @@ colorscheme slate
 syntax on
 
 autocmd BufRead,BufNewFile *.py nnoremap <F5> :!clear;python3 %<enter>
+autocmd BufRead,BufNewFile *.q nnoremap <F5> :!clear;q %<enter>
 autocmd BufRead,BufNewFile *.q setl tabstop=2 shiftwidth=2
 autocmd FileType markdown setl cc=0 spell com=b:-,b:1. fo=roqln
 autocmd BufRead .vimrc setl tabstop=2 shiftwidth=2
