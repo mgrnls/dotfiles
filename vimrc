@@ -134,9 +134,3 @@ set stl=\ %t%m%=\%{getcwd()}\ "
 " files such as .md/.txt/.tex. Should also bind it to a key like F4 so that I
 " can toggle it on and off.
 ab sota state-of-the-art
-
-" Gonna remap some F keys so that they execute current buffer for
-" Python and kdb???
-
-
-
