@@ -6,7 +6,6 @@ set wrap linebreak
 set expandtab
 set shiftwidth=4
 set nu
-set rnu
 set hidden
 set colorcolumn=80
 set textwidth=80
@@ -33,6 +32,7 @@ set autochdir
 colorscheme slate
 syntax on
 
+autocmd BufRead,BufNewFile *.py nnoremap <F5> :!clear;python3 %<enter>
 autocmd BufRead,BufNewFile *.q setl tabstop=2 shiftwidth=2
 autocmd FileType markdown setl cc=0 spell com=b:-,b:1. fo=roqln
 autocmd BufRead .vimrc setl tabstop=2 shiftwidth=2
@@ -66,10 +66,12 @@ nnoremap <Leader>o :e<space>
 nnoremap <C-n> :bn<enter>
 nnoremap <C-p> :bp<enter>
 nnoremap <Leader><Leader> ,
-nnoremap <F5> :setlocal spell!<enter>
+nnoremap <F2> :setlocal spell!<enter>
 xnoremap <Leader>( c(<esc>pa)<esc>
 xnoremap <Leader>{ c{<esc>pa}<esc>
 xnoremap <Leader>[ c[<esc>pa]<esc>
+xnoremap <Leader>" c"<esc>pa"<esc>
+nnoremap <Leader>" di"va"p
 nnoremap <Leader>( di(va(p
 nnoremap <Leader>[ di[va]p
 nnoremap <Leader>{ di{va}p
@@ -81,8 +83,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
-" Experimental!
 nnoremap j gj
 nnoremap k gk
 
@@ -122,9 +122,20 @@ autocmd BufWritePre * call TrimWhitespace()
 
 " Add statusline with buffer number, filename and line count.
 set laststatus=2
-set stl=\ %n\ \|\ %t%m
+set stl=\ %t%m%=\%{getcwd()}\ "
 
 " Notes to self
 " =============
 " Use `zi` to toggle all folds, and then use `za` to open/close a single fold.
 " This will only toggle folds locally.
+
+" Abbreviations - this is experimental, and probably should only be used on
+" files such as .md/.txt/.tex. Should also bind it to a key like F4 so that I
+" can toggle it on and off.
+ab sota state-of-the-art
+
+" Gonna remap some F keys so that they execute current buffer for
+" Python and kdb???
+
+
+
