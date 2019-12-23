@@ -1,3 +1,8 @@
+if empty(glob("~/.vim/colors/xcodedark.vim"))
+  execute '!curl -s https://raw.githubusercontent.com/arzg/vim-colors-xcode/master/colors/xcodedark.vim >> ~/.vim/colors/xcodedark.vim'
+  echo 'xcodedark colourscheme downloaded!'
+endif
+
 filetype plugin indent on
 set nocompatible
 set mouse=a
@@ -27,11 +32,12 @@ set incsearch
 set ignorecase
 set smartcase
 set wildmenu
-set showcmd
 set autochdir
-colorscheme slate
+set cursorline
+colorscheme xcodedark
 syntax on
 
+autocmd BufRead,BufNewFile *.cpp nnoremap <F5> :!clear;g++ %;./a.out<enter>
 autocmd BufRead,BufNewFile *.py nnoremap <F5> :!clear;python3 %<enter>
 autocmd BufRead,BufNewFile *.q nnoremap <F5> :!clear;q %<enter>
 autocmd BufRead,BufNewFile *.q setl tabstop=2 shiftwidth=2
@@ -43,6 +49,7 @@ if has("gui_running")
   if has("mac")
     set gfn=Menlo:h14
   endif
+  colorscheme xcodedark
 endif
 
 let mapleader=","
@@ -51,7 +58,6 @@ inoremap ( ()<left>
 inoremap { {}<left>
 inoremap [ []<left>
 inoremap " ""<left>
-nnoremap '' ''<left>
 inoremap <Leader>a <right>
 inoremap jj <esc>
 inoremap <F5> <esc>:setlocal spell!<enter>i
@@ -59,13 +65,12 @@ nnoremap <Leader>w :w<enter>
 nnoremap <Leader>q :q<enter>
 nnoremap <Leader>x :x<enter>
 nnoremap <Leader>n :call ToggleNetrw()<enter>
-nnoremap <Leader>Q :q!<enter>
 nnoremap <Leader>d :bd<enter>
 nnoremap <Leader>b ^
 nnoremap <Leader>e $
-nnoremap <Leader>o :e<space>
 nnoremap <C-n> :bn<enter>
 nnoremap <C-p> :bp<enter>
+inoremap <C-o> <esc>o
 nnoremap <Leader><Leader> ,
 nnoremap <F2> :setlocal spell!<enter>
 xnoremap <Leader>( c(<esc>pa)<esc>
@@ -113,6 +118,16 @@ function! ToggleNetrw()
   endif
 endfunction
 
+" Show what branch you are in on thestatus bar.
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
 " Delete trailing white space every time you save.
 fun! TrimWhitespace()
   let l:save = winsaveview()
@@ -123,12 +138,13 @@ autocmd BufWritePre * call TrimWhitespace()
 
 " Add statusline with buffer number, filename and line count.
 set laststatus=2
-set stl=\ %t%m%=\%{getcwd()}\ "
+set stl=%#PmenuSel#%{StatuslineGit()}%#CursorColumn#\ %t%m
 
 " Notes to self
 " =============
-" Use `zi` to toggle all folds, and then use `za` to open/close a single fold.
+" - Use `zi` to toggle all folds, and then use `za` to open/close a single fold.
 " This will only toggle folds locally.
+" - For colorscheme, use this https://github.com/arzg/vim-colors-xcode
 
 " Abbreviations - this is experimental, and probably should only be used on
 " files such as .md/.txt/.tex. Should also bind it to a key like F4 so that I
