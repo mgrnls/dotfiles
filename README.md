@@ -10,6 +10,6 @@ cp -R ~/dotfiles/ ~/
 ```
 Although you may have to do
 ```
-rm -rf ~/.git ~/REAME.md
+rm -rf ~/.git ~/README.md
 ```
 assuming you don't have a `.git` folder or a `README.md` in your home directory. (Really need to figure out a better way of doing this.)
