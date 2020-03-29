@@ -45,10 +45,11 @@ set ignorecase
 set smartcase
 set wildmenu
 set autochdir
+set nowrap
 colorscheme slate
 syntax on
 
-autocmd BufRead,BufNewFile *.md setl cc=0
+autocmd BufRead,BufNewFile *.md setl cc=0 nowrap!
 autocmd BufRead,BufNewFile *.cpp nnoremap <F5> :!clear;g++ %;./a.out<enter>
 autocmd BufRead,BufNewFile *.py nnoremap <F5> :!clear;python3 %<enter>
 autocmd BufRead,BufNewFile *.q nnoremap <F5> :!clear;q %<enter>
