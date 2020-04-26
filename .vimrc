@@ -21,6 +21,7 @@ nnoremap k gk
 
 " Setting up stuff
 filetype plugin indent on
+set nu
 set nocompatible
 set tabstop=4
 set wrap linebreak
@@ -88,4 +89,4 @@ function! TrimWhitespace()
   keeppatterns %s/\s\+$//e
   call winrestview(l:save)
 endfun
-autocmd BufWritePre * call TrimWhitespace()
+"autocmd BufWritePre * call TrimWhitespace()

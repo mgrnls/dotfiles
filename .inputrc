@@ -1,0 +1,5 @@
+# Ignore case when using tab for auto complete.
+set completion-ignore-case on
+
+# When pressing tab, autocomplete if unique, otherwise display possible matches.
+set show-all-if-ambiguous on
