@@ -51,9 +51,10 @@ colorscheme slate
 syntax on
 
 autocmd BufRead,BufNewFile *.md setl cc=0 nowrap!
+autocmd BufRead,BufNewFile *.md nnoremap <F5> :!clear;pandoc -f markdown -t plain %<enter>
 autocmd BufRead,BufNewFile *.cpp nnoremap <F5> :!clear;g++ %;./a.out<enter>
 autocmd BufRead,BufNewFile *.py nnoremap <F5> :!clear;python3 %<enter>
-autocmd BufRead,BufNewFile *.q nnoremap <F5> :!clear;q %<enter>
+autocmd BufRead,BufNewFile *.q nnoremap <F5> :!clear;rlwrap q %<enter>
 autocmd BufRead,BufNewFile *.q setl tabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.tex nnoremap <leader>c :!clear;pdflatex %<enter>
 autocmd BufRead,BufNewFile *.tex setl tabstop=2 shiftwidth=2 cc=0
