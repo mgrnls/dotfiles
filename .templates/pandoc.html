@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<style>
+a {
+    text-decoration: underline;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/*--- https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/ ---*/
+
+body {
+    max-width: 35em;
+    margin: 0 auto;
+    padding: 0 1em;
+    font-family: serif
+}
+
+header {
+    border-bottom: 0.08em solid lightgray;
+    font-style: italic;
+}
+
+footer {
+    border-top: 0.08em solid lightgray;
+}
+
+pre {
+    overflow-x: auto;
+}
+
+pre, blockquote {
+    padding-left: 1em;
+    margin: 0;
+}
+
+.title {
+    font-size: 1.9em;
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.2em;
+}
+
+p {
+    text-align: justify;
+}
+
+.date {
+    text-align: center;
+    font-style: italic;
+}
+
+blockquote {
+    font-style: italic;
+}
+</style>
+<meta charset="utf-8">
+<title>$title$</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="15">
+</head>
+<body>
+<article>
+$if(title)$
+<h1 class="title">$title$</h1>
+$endif$
+$body$
+<footer>
+<p>Y'all know this is just my opinion, right?</p>
+</footer>
+</article>
+</body>
+</html>

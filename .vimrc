@@ -91,3 +91,6 @@ function! TrimWhitespace()
   call winrestview(l:save)
 endfun
 "autocmd BufWritePre * call TrimWhitespace()
+
+" Temporary, used to compile things...
+autocmd BufRead,BufNewFile *.md nnoremap <Leader>W :!clear;pandoc -f markdown -t html --template ~/.templates/pandoc.html -o index.html %<enter>
