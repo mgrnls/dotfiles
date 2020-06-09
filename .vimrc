@@ -47,7 +47,7 @@ set smartcase
 set wildmenu
 set autochdir
 set nowrap
-colorscheme slate
+colorscheme jellybeans
 syntax on
 
 autocmd BufRead,BufNewFile *.md setl cc=0 nowrap!
@@ -94,3 +94,7 @@ endfun
 
 " Temporary, used to compile things...
 autocmd BufRead,BufNewFile *.md nnoremap <Leader>W :!clear;pandoc -f markdown -t html --template ~/.templates/pandoc.html -o index.html %<enter>
+
+" Add statusline with filename
+set laststatus=2
+set stl=%#CursorColumn#\ %t
