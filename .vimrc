@@ -65,6 +65,7 @@ autocmd FileType python setl cc=79 tw=79
 " Set up netrw to act like NERDTree, open :Explore with ,n.
 let g:netrw_banner=0
 let g:netrw_winsize=25
+let g:netrw_dirhistmax = 0
 
 " Fix the Lexplore toggle.
 let g:NetrwIsOpen=0
