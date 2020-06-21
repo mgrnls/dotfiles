@@ -1,5 +1,22 @@
-# Ignore case when using tab for auto complete.
+$include /etc/inputrc
+
+# Ignore the case when using tab for auto complete.
 set completion-ignore-case on
 
-# When pressing tab, autocomplete if unique, otherwise display possible matches.
+# If you press tab and there is only one possibility, it will auto complete.
+# However, if it is ambiguous, it will show all possibilities.
 set show-all-if-ambiguous on
+
+# When displaying possible combinations, use colours to indicate the file type.
+set colored-stats on
+
+# If you have more than one file with the same first three letters, then only
+# show the last few letters where they are different when you are
+# autocompleting.
+set completion-prefix-display-length 3
+
+# Cycle forward through autocomplete options when you press tab, and cycle
+# backwards when you press shift-tab.
+set menu-complete-display-prefix on
+"\t": menu-complete
+"\e[Z": menu-complete-backward
