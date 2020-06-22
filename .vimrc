@@ -98,4 +98,4 @@ autocmd BufRead,BufNewFile *.md nnoremap <Leader>W :!clear;pandoc -f markdown -t
 
 " Add statusline with filename
 set laststatus=2
-set stl=%#CursorColumn#\ %t
+set stl=%#Comment#\ %t
