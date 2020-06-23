@@ -47,7 +47,8 @@ set smartcase
 set wildmenu
 set autochdir
 set nowrap
-colorscheme jellybeans
+set background=dark
+colo slate
 syntax on
 
 autocmd BufRead,BufNewFile *.md setl cc=0 nowrap!
