@@ -143,7 +143,6 @@ syn keyword qFunction  ujf
 syn keyword qFunction  ungroup
 syn keyword qFunction  union
 syn keyword qFunction  upper
-"syn keyword qFunction  upsert
 syn keyword qFunction  value
 syn keyword qFunction  var
 syn keyword qFunction  view
