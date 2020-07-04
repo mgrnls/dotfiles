@@ -1,3 +1,7 @@
+" Want to experiment with following link at some point.
+" https://stackoverflow.com/questions/2362914/fold-function-in-vim
+
+
 " Set up the comma key to be the leader
 let mapleader=","
 
@@ -52,7 +56,7 @@ colo slate
 syntax on
 
 autocmd BufRead,BufNewFile *.md setl cc=0 nowrap!
-autocmd BufRead,BufNewFile *.md nnoremap <F5> :!clear;pandoc -f markdown -t plain %<enter>
+autocmd BufRead,BufNewFile *.md nnoremap <F5> :!clear;pandoc -f markdown -t plain % \| less -S<enter>
 autocmd BufRead,BufNewFile *.cpp nnoremap <F5> :!clear;g++ %;./a.out<enter>
 autocmd BufRead,BufNewFile *.py nnoremap <F5> :!clear;python3 %<enter>
 autocmd BufRead,BufNewFile *.q nnoremap <F5> :!clear;rlwrap q %<enter>
