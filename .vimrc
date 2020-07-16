@@ -51,6 +51,7 @@ set smartcase
 set wildmenu
 set autochdir
 set nowrap
+colo murphy
 set background=dark
 syntax on
 
