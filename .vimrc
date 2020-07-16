@@ -52,7 +52,6 @@ set wildmenu
 set autochdir
 set nowrap
 set background=dark
-colo slate
 syntax on
 
 autocmd BufRead,BufNewFile *.md setl cc=0 nowrap!
