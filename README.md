@@ -20,7 +20,7 @@ To setup, clone this repository, navigate into it, then run the following comman
 
 1. Enter copy mode with `ctrl-z [`.
 1. Move around with usual vi key bindings to the first character you want to start copying on.
-1. Press space to start copying.
+1. Press v to start copying.
 1. Move to last character you want to copy.
-1. Press enter to copy.
-1. Use `ctrl-z ]` to paste.
+1. Press y to copy.
+1. Use `ctrl-z p` to paste.
