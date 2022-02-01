@@ -19,7 +19,7 @@ nnoremap k gk
 set number
 set nocompatible
 set tabstop=4
-set wrap linebreak
+set linebreak
 set expandtab
 set shiftwidth=4
 set hidden
@@ -44,7 +44,8 @@ set noswapfile
 syntax on
 
 autocmd BufRead,BufNewFile *.q setl tabstop=2 shiftwidth=2
-autocmd FileType markdown setl cc=0 spell com=b:-,b:1. fo=roqln
+autocmd FileType markdown setlocal cc=0 spell com=b:-,b:1. fo=roqln
+autocmd FileType gitcommit setlocal cc=72 textwidth=72 spell
 
 let g:netrw_banner=0
 
